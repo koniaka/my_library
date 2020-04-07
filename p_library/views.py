@@ -12,6 +12,7 @@ def publishings (request):
     }
     return HttpResponse(template.render(data, request))
 
+
 def index(request):
     template = loader.get_template('index.html')
     books = Book.objects.all()
