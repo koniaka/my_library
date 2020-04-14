@@ -16,11 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from p_library import views
+from p_library.views import HomePageView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    path('', admin.site.urls),
-    path('index/', views.index),
+    path('admin/', admin.site.urls),
+    path('base/', HomePageView.as_view()),
+    path('', views.index),
     path('index/book_increment/', views.book_increment),
     path('index/book_decrement/', views.book_decrement),
     path('publishings/', views.publishings),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

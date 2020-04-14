@@ -2,8 +2,13 @@ from django.template import loader
 from django.http import HttpResponse
 from p_library.models import Book, Publishing
 from django.shortcuts import redirect
+from django.views.generic.base import TemplateView
 
 # Create your views here.
+class HomePageView(TemplateView):
+
+    template_name = "base.html"
+
 def publishings (request):
     template = loader.get_template('publishings.html')
     puplishings = Publishing.objects.all()

@@ -20,7 +20,8 @@ class Book(models.Model):
     author = models.ForeignKey('Author', on_delete=models.CASCADE, verbose_name=_("Автор"),
                                related_name="book_author")
     publishing = models.ForeignKey('Publishing', on_delete=models.CASCADE, null=True, blank=True, verbose_name=_("Издательство"),
-                               related_name="books_pub")
+                                   related_name="books_pub")
+    image = models.ImageField(upload_to='image/', blank=True)
     def __str__(self):
         return self.title
 
